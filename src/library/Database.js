@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore/lite";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  setDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCu7MEeLH8kSneUJ9be05WNC-BjxkdDRZU",
@@ -15,4 +23,22 @@ const Firestore = getFirestore(app);
 
 export let FirebaseApp = app;
 
-export default {};
+// TODO: add async await or use the then() catch() methods
+export default {
+  add_product(product) {
+    const productsRef = collection(Firestore, "products");
+    return addDoc(productsRef, product);
+  },
+  save_product(id, product) {
+    const productsRef = collection(Firestore, "products");
+    return setDoc(doc(productsRef, id), product);
+  },
+  delete_product(id) {
+    const productsRef = collection(Firestore, "products");
+    return deleteDoc(doc(productsRef, id));
+  },
+  get_products() {
+    const productsRef = collection(Firestore, "products");
+    return getDocs(productsRef);
+  },
+};
