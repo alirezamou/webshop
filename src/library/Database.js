@@ -3,6 +3,7 @@ import {
   getFirestore,
   collection,
   getDocs,
+  getDoc,
   addDoc,
   setDoc,
   deleteDoc,
@@ -40,5 +41,8 @@ export default {
   get_products() {
     const productsRef = collection(Firestore, "products");
     return getDocs(productsRef);
+  },
+  get_product(id) {
+    return getDoc(doc(collection(Firestore, "products"), id));
   },
 };
