@@ -11,11 +11,6 @@ const router = createRouter({
   routes: [
     {
       path: "/admin",
-      component: {
-        render(c) {
-          return c("router-view");
-        },
-      },
       beforeEnter(to, _from, next) {
         let auth = getAuth(FirebaseApp);
 
