@@ -9,9 +9,9 @@ const app = createApp(App);
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faIcons } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faIcons);
+library.add(faPlus);
 
 app.component("fa-icon", FontAwesomeIcon);
 
