@@ -74,6 +74,16 @@ export default {
                 price: ""
             };
         }
+    },
+    created() {
+        db.get_products()
+        .then(products => {
+            products.forEach(product => this.products.push({
+                id: product.id,
+                editing: false,
+                data: product.data(),
+            }));
+        });
     }
 }
 </script>
