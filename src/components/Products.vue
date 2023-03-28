@@ -7,6 +7,25 @@
             </div>
         </div>
     </section>
+
+    <section class="section container">
+        <div class="columns is-multiline">
+            <div class="column is-4" v-for="(product, id) in products" :key="id">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3"></figure>
+                        <router-link :to="'/product/' + id">
+                            <img :src="product.image" :alt="product.name">
+                        </router-link>
+                    </div>
+
+                    <div class="card-content">
+                        <p class="title is-5">{{ product.name }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 <script>
 export default {
