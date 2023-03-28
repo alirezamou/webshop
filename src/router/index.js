@@ -3,9 +3,6 @@ import "firebase/auth";
 import { getAuth } from "firebase/auth";
 import { FirebaseApp } from "@/library/Database";
 
-import AdminLogin from "@/components/admin/Login.vue";
-import AdminProduct from "@/components/admin/Product.vue";
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -27,9 +24,20 @@ const router = createRouter({
         }
       },
       children: [
-        { path: "login", component: AdminLogin },
-        { path: "products", component: AdminProduct },
+        {
+          path: "login",
+          component: () => import("@/components/admin/Login.vue"),
+        },
+        {
+          path: "products",
+          component: () => import("@/components/admin/Product.vue"),
+        },
       ],
+    },
+    {
+      name: "products",
+      path: "/",
+      component: () => import("@/components/Products.vue"),
     },
   ],
 });
