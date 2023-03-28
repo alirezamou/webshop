@@ -134,11 +134,9 @@ export default {
                     id: product.id,
                     data: this.newProduct,
                 });
-            })
-            .catch(error => console.log(error));
 
-            this.addingProduct = false;
-            this.newProduct = {
+                this.addingProduct = false;
+                this.newProduct = {
                 name: "",
                 description: "",
                 image: "",
@@ -146,6 +144,8 @@ export default {
             };
 
             this.editProduct(0);
+            })
+            .catch(error => console.log(error));
         },
         editProduct(index) {
             this.products.forEach(product => product.editing = false);
