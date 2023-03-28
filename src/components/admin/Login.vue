@@ -37,16 +37,13 @@ export default {
     },
     methods: {
         login() {
-            console.log("in login");
             signInWithEmailAndPassword(auth, this.email, this.password)
-            .then(() => console.log("signed in"))
             .catch((error) => {
                 this.error = error.message;
                 console.log(error);
             });
 
             onAuthStateChanged(auth ,(user) => {
-                console.log("state changed: ", user);
                 if(user) {
                     this.$router.push("/admin/products");
                 }
