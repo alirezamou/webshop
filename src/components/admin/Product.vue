@@ -166,8 +166,8 @@ export default {
         deleteSize(productIndex, sizeIndex) {
             this.products[productIndex].sizes.splice(sizeIndex, 1);
         },
-        add_size(index) {
-            this.products[index].sizes.push(this.newSize);
+        addSize(index) {
+            this.products[index].data.sizes.push(this.newSize);
             this.newSize = {
                 weight: "",
                 name: "",
