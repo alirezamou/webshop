@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import "firebase/auth";
 import { getAuth } from "firebase/auth";
 import { FirebaseApp } from "@/library/Database";
+import AdminProduct from "@/components/admin/Product.vue";
+import Product from "@/components/Product.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,7 +32,7 @@ const router = createRouter({
         },
         {
           path: "products",
-          component: () => import("@/components/admin/Product.vue"),
+          component: AdminProduct,
         },
       ],
     },
@@ -38,6 +40,11 @@ const router = createRouter({
       name: "products",
       path: "/",
       component: () => import("@/components/Products.vue"),
+    },
+    {
+      name: "product",
+      path: "/product/:id",
+      component: Product,
     },
   ],
 });
