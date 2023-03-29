@@ -1,10 +1,15 @@
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: "App",
+  mounted() {
+    console.log(this.$store.getters.totalItems)
+  },
   computed: {
-    total() {
-      return this.$store.getters.totalItems;
-    }
+    ...mapGetters({
+      total: "totalItems"
+    })
   }
 }
 </script>
@@ -18,9 +23,7 @@ export default {
 
       <div class="navbar-menu">
         <div class="navbar-end">
-          <router-link to="/cart" class="navbar-item">
-            <fa-icon icon="fa-solid fa-shopping-cart">Cart {{ total }}</fa-icon>
-          </router-link>
+          <router-link to="/cart" class="navbar-item"><fa-icon icon="fa-solid fa-shopping-cart" /> Cart {{ total }}</router-link>
         </div>
       </div>
     </div>
