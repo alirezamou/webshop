@@ -38,6 +38,9 @@
                         <label>Total</label>
                         <p>{{ total }}</p>
                     </div>
+                    <button type="submit" class="button is-success">
+                        <fa-icon icon="fa-solid fa-plus"></fa-icon> Add to cart
+                    </button>
                 </form>
             </div>
         </div>
@@ -62,7 +65,14 @@ export default {
         }
     },
     methods: {
-        addToCart() {}
+        addToCart() {
+            this.$store.commit("ADD_ITEM", {
+                id: this.$route.params.id,
+                size: this.pickedSize,
+                quantity: this.quantity,
+                price: this.product.sizes[this.pickedSize].price
+            })
+        }
     },
 }
 </script>
