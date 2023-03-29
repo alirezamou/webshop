@@ -12,7 +12,7 @@ const store = createStore({
       return state.products[id];
     },
     totalItems: (state) => {
-      state.items.reduce(
+      return state.items.reduce(
         (acc, curVal) => acc + curVal.quantity * curVal.price,
         0
       );
