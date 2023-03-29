@@ -28,6 +28,11 @@ const store = createStore({
       });
     },
   },
+  plugins: [
+    (store) => {
+      store.dispatch("getProducts");
+    },
+  ],
 });
 
 export default store;
