@@ -44,17 +44,17 @@
     </section>
 </template>
 <script>
-import db from "@/library/Database";
-
 export default {
     data() {
         return {
-            product: {},
             pickedSize: 0,
             quantity: 1,
         };
     },
     computed: {
+        product() {
+            return this.$store.getters.getProduct(this.$route.params.id);
+        },
         total() {
             if(this.product.sizes === undefined) return 0;
 
@@ -64,10 +64,6 @@ export default {
     methods: {
         addToCart() {}
     },
-    created() {
-        db.get_product(this.$route.params.id)
-        .then((product) => this.product = product.data())
-    }
 }
 </script>
 
