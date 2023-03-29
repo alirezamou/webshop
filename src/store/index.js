@@ -43,7 +43,7 @@ const store = createStore({
         state.items[itemIndex].quantity = quantity;
       }
     },
-    REMOVE_ITEM: (state, { id }) => {
+    REMOVE_ITEM: (state, { id, size }) => {
       let itemIndex = state.items.findIndex(
         (item) => item.id === id && item.size === size
       );
