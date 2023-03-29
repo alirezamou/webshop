@@ -28,25 +28,11 @@
     </section>
 </template>
 <script>
-import db from "@/library/Database";
-
 export default {
-    data() {
-        return {
-            products: {}
+    computed: {
+        products() {
+            return this.$store.state.products;
         }
-    },
-    created() {
-        db.get_products()
-        .then((products) => {
-            let tempProducts = {};
-
-            products.forEach(product => {
-                tempProducts[product.id] = product.data();
-            });
-
-            this.products = tempProducts;
-        })
     }
 }
 </script>
