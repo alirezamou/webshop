@@ -40,7 +40,7 @@ const store = createStore({
       );
 
       if (itemIndex !== -1) {
-        state.items[itemIndex] = quantity;
+        state.items[itemIndex].quantity = quantity;
       }
     },
     REMOVE_ITEM: (state, { id }) => {
