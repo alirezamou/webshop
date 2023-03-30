@@ -24,7 +24,6 @@ const Firestore = getFirestore(app);
 
 export let FirebaseApp = app;
 
-// TODO: add async await or use the then() catch() methods
 export default {
   add_product(product) {
     const productsRef = collection(Firestore, "products");
