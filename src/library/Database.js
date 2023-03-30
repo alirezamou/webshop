@@ -10,6 +10,8 @@ import {
   doc,
 } from "firebase/firestore/lite";
 
+import moment from "moment";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCu7MEeLH8kSneUJ9be05WNC-BjxkdDRZU",
   authDomain: "webshop-ef5a0.firebaseapp.com",
