@@ -17,7 +17,7 @@
                 <tr v-if="items.length !== 0" v-for="item in items" :key="item.id + item.size">
                     <td>{{ getItem(item.id) }}</td>
                     <td>{{ getSize(item.id, item.size) }}</td>
-                    <td>
+                    <td v-if="!viewOnly">
                         <input
                           type="number"
                           min="1"
@@ -26,9 +26,10 @@
                           class="input"
                         >
                     </td>
+                    <td v-if="viewOnly">{{ item.quantity }}</td>
                     <td>{{ item.price }}</td>
                     <td>{{ item.price * item.quantity }}</td>
-                    <td><a @click="removeItem(item.id, item.size)">
+                    <td v-if="!viewOnly"><a @click="removeItem(item.id, item.size)">
                         <fa-icon icon="fa-solid fa-times"></fa-icon>
                     </a></td>
                 </tr>
@@ -43,13 +44,19 @@
 
         <p v-if="noItemsError">You haven't selected any Products Yet.</p>
 
-        <a @click="checkout" class="button is-info">Checkout</a>
+        <a v-if="!viewOnly" @click="checkout" class="button is-info">Checkout</a>
     </section>
 </template>
 
 <script>
 
 export default {
+    props: {
+        viewOnly: {
+            type: Boolean,
+            default: false,
+        },
+    },
     data() {
         return {
             noItemsError: false,
