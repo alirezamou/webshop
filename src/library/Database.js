@@ -44,4 +44,11 @@ export default {
   get_product(id) {
     return getDoc(doc(collection(Firestore, "products"), id));
   },
+  add_order(order) {
+    if (order.timestamp === undefined) {
+      order.timestamp = moment().format();
+    }
+    const ordersRef = collection(Firestore, "orders");
+    return addDoc(ordersRef, order);
+  },
 };
