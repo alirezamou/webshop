@@ -4,7 +4,7 @@
             <option
               v-for="country in countries"
               :key="country.code"
-              :value="contry.code"
+              :value="country.code"
               :selected="country.code === selectedCountry"
             >
                 {{ country.name }}
