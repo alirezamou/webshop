@@ -24,9 +24,19 @@ let baseApp;
 
 let auth = getAuth(FirebaseApp);
 
+const priceFilter = (price) =>
+  Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
+    price
+  );
+
 auth.onAuthStateChanged(() => {
   if (!baseApp) {
     const baseApp = createApp(App);
+
+    baseApp.config.globalProperties.$filters = {
+      price: priceFilter,
+    };
+
     baseApp.component("fa-icon", FontAwesomeIcon);
     baseApp.use(router);
     baseApp.use(store);

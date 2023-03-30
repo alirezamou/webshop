@@ -20,7 +20,7 @@ export default {
 
       <div class="navbar-menu">
         <div class="navbar-end">
-          <router-link to="/cart" class="navbar-item"><fa-icon icon="fa-solid fa-shopping-cart" /> Cart {{ total }}</router-link>
+          <router-link to="/cart" class="navbar-item"><fa-icon icon="fa-solid fa-shopping-cart" /> Cart {{ $filters.price(total) }}</router-link>
         </div>
       </div>
     </div>

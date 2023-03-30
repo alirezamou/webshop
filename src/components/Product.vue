@@ -25,7 +25,7 @@
                                 <td><input type="radio" name="size" :value="index" v-model="pickedSize"></td>
                                 <td>{{ size.name }}</td>
                                 <td>{{ size.weight }}</td>
-                                <td>{{ size.price }}</td>
+                                <td>{{ $filters.price(size.price) }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="field">
                         <label>Total</label>
-                        <p>{{ total }}</p>
+                        <p>{{ $filters.price(total) }}</p>
                     </div>
                     <button type="submit" class="button is-success">
                         <fa-icon icon="fa-solid fa-plus"></fa-icon> Add to cart

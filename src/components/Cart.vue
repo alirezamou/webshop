@@ -27,8 +27,8 @@
                         >
                     </td>
                     <td v-if="viewOnly">{{ item.quantity }}</td>
-                    <td>{{ item.price }}</td>
-                    <td>{{ item.price * item.quantity }}</td>
+                    <td>{{ $filters.price(item.price) }}</td>
+                    <td>{{ $filters.price(item.price * item.quantity) }}</td>
                     <td v-if="!viewOnly"><a @click="removeItem(item.id, item.size)">
                         <fa-icon icon="fa-solid fa-times"></fa-icon>
                     </a></td>
@@ -37,7 +37,7 @@
             <tfoot>
                 <tr>
                     <td colspan="4" class="has-text-right is-size-4">Total</td>
-                    <td colspan="2" class="is-size-4">{{ totalItems }}</td>
+                    <td colspan="2" class="is-size-4">{{ $filters.price(totalItems) }}</td>
                 </tr>
             </tfoot>
         </table>

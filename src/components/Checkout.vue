@@ -120,7 +120,7 @@
                                           name="shipping"
                                           v-model="shipping"
                                         />
-                                        {{ shippingOption.name }} (+{{ shippingOption.price }})
+                                        {{ shippingOption.name }} (+{{ $filters.price(shippingOption.price) }})
                                     </label>
                                 </p>
 
@@ -142,7 +142,7 @@
                                           name="payment"
                                           v-model="payment"
                                         />
-                                        {{ paymentOption.name }} (+{{ paymentOption.price }})
+                                        {{ paymentOption.name }} (+{{ $filters.price(paymentOption.price) }})
                                     </label>
                                 </p>
 
@@ -155,8 +155,8 @@
                         <div class="box">
                             <h2 class="title is-4">Total</h2>
 
-                            <p>Cart: {{ totalItems }}</p>
-                            <p>Incl. shipping and payment: {{ total }}</p>
+                            <p>Cart: {{ $filters.price(totalItems) }}</p>
+                            <p>Incl. shipping and payment: {{ $filters.price(total) }}</p>
                         </div>
                     </div>
 
@@ -174,16 +174,16 @@
                     <div class="column is-third">
                         <h2 class="title is-5">Shipping</h2>
                         <p>{{ selectedShipping.name }}</p>
-                        <p>{{ selectedShipping.price }}</p>
+                        <p>{{ $filters.price(selectedShipping.price) }}</p>
                     </div>
                     <div class="column is-third">
                         <h2 class="title is-5">Payment</h2>
                         <p>{{ selectedPayment.name }}</p>
-                        <p>{{ selectedPayment.price }}</p>
+                        <p>{{ $filters.price(selectedPayment.price) }}</p>
                     </div>
 
                     <div class="column is-third">
-                        <h2 class="title is-4">Total {{ total }}</h2>
+                        <h2 class="title is-4">Total {{ $filters.price(total) }}</h2>
                     </div>
 
                     <div class="field is-grouped">
