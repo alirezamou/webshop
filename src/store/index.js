@@ -5,9 +5,15 @@ const store = createStore({
   state: {
     products: {},
     items: [],
+    customer: {},
+    shipping: {},
+    payment: {},
   },
 
   getters: {
+    total: (state, getters) => {
+      return getters.totalItems + getters.shippingPrice + getters.paymentPrice;
+    },
     getProduct: (state) => (id) => {
       return state.products[id];
     },
@@ -16,6 +22,20 @@ const store = createStore({
         (acc, curVal) => acc + curVal.quantity * curVal.price,
         0
       );
+    },
+    shippingPrice: (state) => {
+      if (state.shipping.price !== undefined) {
+        return state.shipping.price;
+      }
+
+      return 0;
+    },
+    paymentPrice: (state) => {
+      if (state.payment.price !== undefined) {
+        return state.payment.price;
+      }
+
+      return 0;
     },
   },
 
@@ -52,6 +72,20 @@ const store = createStore({
         state.items.splice(itemIndex, 1);
       }
     },
+    SET_CUSTOMER: (state, customer) => {
+      state.customer = customer;
+    },
+    SET_SHIPPING: (state, shipping) => {
+      state.shipping = shipping;
+    },
+    SET_PAYMENT: (state, payment) => {
+      state.payment = payment;
+    },
+    CLEAR_CART: (state) => {
+      state.items = [];
+      state.shipping = [];
+      state.payment = [];
+    },
   },
 
   actions: {
@@ -66,7 +100,16 @@ const store = createStore({
         commit("SET_PRODUCTS", tempProducts);
       });
     },
+    addOrder({ commit, state }) {
+      db.add_order({
+        cart: state.items,
+        customer: state.customer,
+        shipping: state.shipping,
+        payment: state.payment,
+      }).then(() => commit("CLEAR_CART"));
+    },
   },
+
   plugins: [
     (store) => {
       store.dispatch("getProducts");
